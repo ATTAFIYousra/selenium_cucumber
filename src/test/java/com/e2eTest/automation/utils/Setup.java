@@ -8,10 +8,21 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 
+import io.cucumber.java.Before;
+
 public class Setup {
 
 	private static WebDriver driver;
-
+	
+	/**
+	 * This method is used to open browser. This method is called before the
+	 * invocation of each test method in the given class. In this method we need to
+	 * pass browser name which will invoke the respective driver.
+	 * 
+	 * @throws MalformedURLException the malformed URL exception
+	 * @Before Methods annotated with @Before will execute before every scenario.
+	 */
+	@Before
 	public void setWebDriver() {
 
 		String browser = System.getProperty("browser");
@@ -38,6 +49,11 @@ public class Setup {
 		default:
 			throw new IllegalArgumentException("Browser \"" + browser + "\" is not supported. ");
 		}
+	}
+	
+	/*GETTER*/
+	public static WebDriver getDriver() {
+		return driver;
 	}
 
 }
