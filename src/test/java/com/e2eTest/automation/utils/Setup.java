@@ -9,11 +9,12 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 
 import io.cucumber.java.Before;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Setup {
 
 	private static WebDriver driver;
-	
+
 	/**
 	 * This method is used to open browser. This method is called before the
 	 * invocation of each test method in the given class. In this method we need to
@@ -31,9 +32,14 @@ public class Setup {
 		}
 		switch (browser) {
 		case "chrome":
-			System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/win/chromedriver.exe");
+			/*
+			 * System.setProperty("webdriver.chrome.driver",
+			 * "src/test/resources/drivers/win/chromedriver.exe"); ChromeOptions
+			 * chromeOptions = new ChromeOptions(); driver = new ChromeDriver();
+			 */
 			ChromeOptions chromeOptions = new ChromeOptions();
-			driver = new ChromeDriver();
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver(chromeOptions);
 			driver.manage().window().maximize();
 			chromeOptions.addArguments("['start-maximized']");
 			break;
@@ -50,8 +56,8 @@ public class Setup {
 			throw new IllegalArgumentException("Browser \"" + browser + "\" is not supported. ");
 		}
 	}
-	
-	/*GETTER*/
+
+	/* GETTER */
 	public static WebDriver getDriver() {
 		return driver;
 	}
