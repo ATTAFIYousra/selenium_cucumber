@@ -55,6 +55,7 @@ public class Setup {
 		default:
 			throw new IllegalArgumentException("Browser \"" + browser + "\" is not supported. ");
 		}
+
 	}
 
 	/* GETTER */
