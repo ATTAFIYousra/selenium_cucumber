@@ -37,6 +37,7 @@ public class Setup {
 			 * "src/test/resources/drivers/win/chromedriver.exe"); ChromeOptions
 			 * chromeOptions = new ChromeOptions(); driver = new ChromeDriver();
 			 */
+			System.setProperty("webdriver.http.factory", "jdk-http-client");
 			ChromeOptions chromeOptions = new ChromeOptions();
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver(chromeOptions);

@@ -17,8 +17,8 @@ import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
 */
 @CucumberOptions(
 		features = {"src/specs/features"},
-		plugin = {"pretty", "html:target/cucumber-report.html"},
-		tags = ("@login_CasPassant"),
+		plugin = {"pretty", "html:target/cucumber-report.html", "json:target/cucumber-report.json"},
+		tags = ("@vendors"),
 		// glue = {},
 		monochrome = true,
 		snippets = CAMELCASE
