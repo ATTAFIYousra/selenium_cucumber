@@ -1,10 +1,9 @@
 package com.e2eTest.automation.step_definitions;
 
-
-import com.e2eTest.automation.page_objects.CustomersInfoPage;
 import com.e2eTest.automation.page_objects.CustomersInfoPage1;
 import com.e2eTest.automation.page_objects.LoginPage;
 import com.e2eTest.automation.utils.ConfigFileReader;
+import com.e2eTest.automation.utils.RandomValue;
 import com.e2eTest.automation.utils.SeleniumUtils;
 
 import io.cucumber.java.en.Then;
@@ -15,10 +14,12 @@ public class CustomersInfoStepDefinition {
 	public CustomersInfoPage1 customers;
 	public SeleniumUtils seleniumUtils;
     private ConfigFileReader configFileReader ;
+    public RandomValue randomValue;
     
 	public CustomersInfoStepDefinition() {
-		customers = new CustomersInfoPage1();;
+		customers = new CustomersInfoPage1();
 		seleniumUtils = new SeleniumUtils();
+		randomValue = new RandomValue();
 		this.configFileReader = new ConfigFileReader();
 	}
 
@@ -36,8 +37,7 @@ public class CustomersInfoStepDefinition {
 
 	@When("Je saisis l email de formulaire Customers {string}")
 	public void jeSaisisLEmailDeFormulaireCustomers(String email) {
-		//customers.fillEmail(email);
-		seleniumUtils.writeText(customers.getCustomerWrappedElement(customers.getEmail()), email);
+		seleniumUtils.writeText(customers.getCustomerWrappedElement(customers.getEmail()),RandomValue.getSaltString()+"@gmail.com");
 	}
 
 	@When("Je saisis le Password de formulaire Customers {string}")

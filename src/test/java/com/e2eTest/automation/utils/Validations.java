@@ -211,5 +211,14 @@ public class Validations extends BasePage {
 		log.info("Actual URL is : " + actualUrl);
 
 	}
+    /**
+    * Assert command for checking the url in selenium webdriver
+    * @param string URL
+    */
+   public void checkChangedURL(String expectedURL)
+   {
+   	String URL = driver.getCurrentUrl();
+   	Assert.assertEquals(URL, expectedURL);
+   }
 
 }
