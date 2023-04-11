@@ -18,14 +18,14 @@ pipeline {
                 // To run Maven on a Windows agent, use
                  bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
-
-             stage('Rapport de test') {
+        }
+          stage('Rapport de test') {
               steps {
                   cucumber buildStatus: "UNSTABLE",
                       fileIncludePattern: "**/cucumber-report.json",
                   jsonReportDirectory:'target'
               }
         }
-        }
+
     }
 }
