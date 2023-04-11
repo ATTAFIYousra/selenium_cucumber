@@ -19,14 +19,13 @@ pipeline {
                  bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
 
-            post {
-                // If Maven was able to run the tests, even if some of the test
-                // failed, record the test results and archive the jar file.
-                success {
-                    junit '/AutomationQA/target/cucumber-report.json'
-                    archiveArtifacts 'target/*.jar'
-                }
-            }
+             stage('Rapport de test') {
+              steps {
+                  cucumber buildStatus: "UNSTABLE",
+                      fileIncludePattern: "**/cucumber-report.json",
+                  jsonReportDirectory:'target'
+              }
+        }
         }
     }
 }

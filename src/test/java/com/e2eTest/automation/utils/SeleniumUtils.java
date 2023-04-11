@@ -118,6 +118,17 @@ public class SeleniumUtils extends BasePage {
 		actions.moveToElement(Setup.getDriver().findElement(element));
 		actions.click().perform();
 	}
+	
+	/**
+	 * method to double click on an element with action class.
+	 *
+	 * @param element to be clicked
+	 */
+	public void doubleclickOnElementUsingActions(By element) {
+		Actions actions = new Actions(driver);
+		actions.moveToElement(Setup.getDriver().findElement(element));
+		actions.doubleClick().perform();
+	}
 
 	/**
 	 * method to click on an element using javascript.
